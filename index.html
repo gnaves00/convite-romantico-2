@@ -1,1 +1,132 @@
-<h1>Convite em construção</h1>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Convite Romântico</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f9d4d4, #ffe5e5);
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 { font-size: 2rem; margin-bottom: 20px; color: #c0392b; }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #yes { background-color: #27ae60; color: white; }
+    #no { background-color: #e74c3c; color: white; position: relative; }
+    #options {
+      display: none;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1000px;
+    }
+    .restaurant {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 300px;
+      flex: 1;
+    }
+    .restaurant img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .restaurant p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .restaurant a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #2980b9;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      #options { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML.
+  </audio>
+  <h1 id="main-title">Quer sair comigo?</h1>
+  <div class="buttons">
+    <button id="yes">SIM</button>
+    <button id="no">NÃO</button>
+  </div>
+  <div id="options">
+    <div class="restaurant">
+      <img src="https://image.portaldacidade.com/unsafe/https://bucket.portaldacidade.com/jacarezinho.portaldacidade.com/img/news/2023-06/cinema-a-dois-5-sugestoes-de-filmes-para-aproveitar-o-dia-dos-namorados-6487651574612.jpeg" alt="Cinema Romântico">
+      <p>🎬 Opção 1: Cinema Romântico</p>
+      <a href="https://wa.me/5516981328240?text=Olá%20Sr%20Guilherme,%20irei%20aceitar%20o%20seu%20convite%20para%20um%20Cinema%20Romântico%20❤️!" target="_blank">Escolher</a>
+    </div>
+    <div class="restaurant">
+      <img src="https://cdn.diariodolitoral.com.br/upload/dn_arquivo/2024/06/cacau-show-parque-novo-sp.jpeg" alt="Rolê Divertido">
+      <p>🎡 Opção 2: Rolê Divertido</p>
+      <a href="https://wa.me/5516981328240?text=Olá%20Sr%20Guilherme,%20irei%20aceitar%20o%20seu%20convite%20para%20um%20Rolê%20Divertido%20❤️!" target="_blank">Escolher</a>
+    </div>
+    <div class="restaurant">
+      <img src="https://blog.covabra.com.br/wp-content/uploads/2024/06/Jantar-romantico-com-receitas-praticas-para-conquistar-o-seu-amor.png" alt="Jantar Romântico">
+      <p>🍷 Opção 3: Jantar Romântico</p>
+      <a href="https://wa.me/5516981328240?text=Olá%20Sr%20Guilherme,%20irei%20aceitar%20o%20seu%20convite%20para%20um%20Jantar%20Romântico%20❤️!" target="_blank">Escolher</a>
+    </div>
+  </div>
+  <script>
+    const noButton = document.getElementById('no');
+    const yesButton = document.getElementById('yes');
+    const optionsDiv = document.getElementById('options');
+    function moveButtonRandomly(button) {
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      button.style.position = 'absolute';
+      button.style.left = `${x}px`;
+      button.style.top = `${y}px`;
+    }
+    function handleNoClick() { moveButtonRandomly(noButton); }
+    function handleNoTouch() { moveButtonRandomly(noButton); }
+    function handleYesClick() {
+      optionsDiv.style.display = 'flex';
+      noButton.style.display = 'none';
+      yesButton.style.display = 'none';
+      document.getElementById('main-title').innerText = 'Escolha a melhor opção para você ❤️';
+    }
+    noButton.addEventListener('mouseover', handleNoClick);
+    noButton.addEventListener('click', handleNoTouch);
+    yesButton.addEventListener('click', handleYesClick);
+  </script>
+</body>
+</html>
